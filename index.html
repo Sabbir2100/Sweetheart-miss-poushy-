@@ -1,0 +1,131 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For Miss Rubaiya ❤️</title><style>
+body {
+  margin: 0;
+  font-family: Arial;
+  text-align: center;
+  background: black;
+  color: white;
+  overflow: hidden;
+}
+
+/* Background image */
+.bg {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+  opacity: 0.5;
+}
+
+h1 {
+  margin-top: 50px;
+  font-size: 40px;
+}
+
+button {
+  padding: 12px 25px;
+  font-size: 18px;
+  margin: 10px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.yes {
+  background: green;
+  color: white;
+}
+
+.no {
+  background: red;
+  color: white;
+  position: relative;
+}
+
+.letter {
+  display: none;
+  background: rgba(0,0,0,0.7);
+  padding: 20px;
+  margin: 20px;
+  border-radius: 15px;
+}
+
+/* Floating hearts */
+.heart {
+  position: absolute;
+  color: red;
+  animation: float 5s linear infinite;
+}
+
+@keyframes float {
+  from { transform: translateY(100vh); }
+  to { transform: translateY(-10vh); }
+}
+</style></head><body><img src="photo.jpg" class="bg"><h1>Miss Rubaiya 🌹<br>Do you love me? ❤️</h1><button class="yes" onclick="showLetter()">Yes 💖</button>
+<button class="no" onmouseover="moveButton()">No 😢</button>
+
+<div class="letter" id="letter">
+<h2>My Love 💌</h2>
+<p id="text"></p><h3 id="time"></h3>
+</div><!-- Music --><audio autoplay loop>
+  <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mpeg">
+</audio><script>
+function moveButton(){
+  let btn = document.querySelector('.no');
+  btn.style.position = 'absolute';
+  btn.style.top = Math.random()*window.innerHeight + 'px';
+  btn.style.left = Math.random()*window.innerWidth + 'px';
+}
+
+function showLetter(){
+  document.getElementById("letter").style.display = "block";
+  document.getElementById("text").innerText = letter;
+  startTime();
+}
+
+/* Love letter */
+let letter = `From the moment I saw you, Miss Rubaiya, something changed inside me.
+
+You are not just beautiful… you are peaceful, magical, and the reason my heart smiles every single day.
+
+Your eyes, your smile, your presence — everything about you feels like home to me.
+
+I don’t need the perfect world… I just need you in mine.
+
+If love had a name, it would be yours.
+
+I love you ❤️`;
+
+/* Time counter (since birth style) */
+function startTime(){
+  let start = new Date("2005-01-01"); // change if needed
+  setInterval(()=>{
+    let now = new Date();
+    let diff = now - start;
+
+    let days = Math.floor(diff/(1000*60*60*24));
+    let hours = Math.floor((diff/(1000*60*60))%24);
+    let mins = Math.floor((diff/(1000*60))%60);
+
+    document.getElementById("time").innerHTML =
+    "I have been loving you for " + days + " days " + hours + " hours " + mins + " minutes ❤️";
+  },1000);
+}
+
+/* Floating hearts */
+setInterval(()=>{
+  let heart = document.createElement("div");
+  heart.className="heart";
+  heart.innerHTML="❤️";
+  heart.style.left = Math.random()*100 + "vw";
+  heart.style.fontSize = (20+Math.random()*20)+"px";
+  document.body.appendChild(heart);
+
+  setTimeout(()=>{heart.remove();},5000);
+},300);
+</script></body>
+</html>
